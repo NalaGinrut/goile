@@ -30,7 +30,7 @@
   (lambda (x)
     (syntax-case x ()
       ((_ cmd) (identifier? #'cmd)
-       #`(define (#,(datum->syntax #'cmd (symbol-append 'gtp: (syntax->datum #'cmd))) . args)
+       #`(define-public (#,(datum->syntax #'cmd (symbol-append 'gtp: (syntax->datum #'cmd))) . args)
            (format #t "~a ~{~a~^ ~}~%~!" 'cmd args)
            (format *gnugo* "~a ~{~a~^ ~}~%~!" 'cmd args)
            (let lp((line (read-line *gnugo*)) (ret '()))
